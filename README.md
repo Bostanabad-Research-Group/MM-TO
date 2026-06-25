@@ -1,7 +1,7 @@
 # Multi-Material Topology Optimization via Physics-Informed Gaussian Processes
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-This repository contains the implementation for our paper on **multi-material multi-physics topology optimization via physics-informed Gaussian processes priors**. The code includes representative examples for compliance minimization, heat conduction, compliant mechanism design, and thermo-mechanical design in both 2D or 3D settings where applicable.
+This repository provides the implementation for our paper on **multi-material multi-physics topology optimization with physics-informed Gaussian process priors**. The code includes representative examples for compliance minimization, heat conduction, compliant mechanism design, and thermo-mechanical design in 2D and 3D settings where applicable.
 
 ---
 
@@ -10,12 +10,12 @@ The architecture of the proposed framework is illustrated below:
 
 ![Schematic overview of the multi-material topology optimization framework.](figure.png)
 
-Our PIGP framework represents state variables and material-phase fields using GP-based models whose mean functions are represented by neural networks. The material distribution is optimized together with the physics fields by minimizing objective, potential energy, and constraint terms, so the final design is obtained through a simultaneous physics-informed optimization process.
+The PIGP framework represents state variables and material-phase fields with GP-based models whose mean functions are parameterized by neural networks. Material distributions and physics fields are optimized simultaneously by minimizing objective, potential-energy, and constraint terms within a physics-informed optimization process.
 
 The repository includes examples for:
 
-1. Multi-material compliance minimization with mass and/or cost constraints for both 2D and 3D.
-2. Multi-material heat conduction design for both 2D and 3D.
+1. Multi-material compliance minimization with mass and/or cost constraints in 2D and 3D.
+2. Multi-material heat-conduction design in 2D and 3D.
 3. Multi-material compliant mechanism design.
 4. Thermo-mechanical actuator and gripper design.
 
@@ -27,10 +27,10 @@ The repository includes examples for:
 | --- | --- |
 | `compliance minimization 2D/` | 2D compliance-minimization examples with mass, cost, and combined mass-cost constraints. |
 | `compliance minimization 3D/` | 3D compliance-minimization examples for single-material and multi-material/mass-cost cases. |
-| `heat conduction 2D/` | 2D heat-conduction topology optimization examples. It requires a Data folder.|
+| `heat conduction 2D/` | 2D heat-conduction topology optimization examples. It requires a `Data/` folder. |
 | `heat conduction 3D/` | 3D heat-conduction topology optimization examples. |
-| `compliant design/` | 2D compliant mechanism examples for single- and multi-material designs. It requires a Data folder.|
-| `thermo-mechanical/` | 2D thermo-mechanical design examples with different material systems. It requires a Data folder.|
+| `compliant design/` | 2D compliant mechanism examples for single- and multi-material designs. It requires a `Data/` folder. |
+| `thermo-mechanical/` | 2D thermo-mechanical design examples with different material systems. It requires a `Data/` folder. |
 
 Each example folder contains its own `models/` and `utils/` subfolders. Run scripts from inside the corresponding example folder so that local imports resolve correctly.
 
@@ -69,9 +69,25 @@ The 2D heat-conduction, compliant-design, and thermo-mechanical examples use CUD
 
 ---
 
+## Archived Code and Data Release
+
+The complete published release, including all implementation files and the data files needed to reproduce the examples, is archived on Zenodo:
+
+[https://zenodo.org/records/20840006](https://zenodo.org/records/20840006)
+
+Please use the Zenodo record as the archival version of the code and data for citation and reproducibility purposes.
+
+---
+
+After downloading the complete release from Zenodo, place the archive in the repository root and extract it before running the examples.
+
+The extracted `Data/` folders are required for the 2D heat-conduction, compliant-design, and thermo-mechanical examples. The compliance-minimization and 3D heat-conduction examples generate their training data directly from the scripts and do not require the downloaded `Data/` folders.
+
+---
+
 ## Before Running
 
-Most scripts define all parameters near the bottom of the file. Before launching an example, check:
+Most scripts define their parameters near the bottom of the file. Before launching an example, check:
 
 1. `base_folder`: output root for `Results/`. Some compliance and 3D scripts still contain absolute workstation paths; replace them with a local path such as:
 
@@ -90,7 +106,7 @@ Most scripts define all parameters near the bottom of the file. Before launching
 4. `N_worker`: number of CUDA GPUs for scripts that call `get_multiGPU`.
 5. Material parameters, mass/cost targets, and mesh resolution in the same parameter block.
 
-For a quick smoke test, reduce `random_state` to one seed and reduce `TO_num_iter` before running the full cases.
+For a quick smoke test, use a single seed in `random_state` and reduce `TO_num_iter` before running the full cases.
 
 ---
 
@@ -171,7 +187,7 @@ python EX3D1_single_material.py
 python EX3D1_multi_material.py
 ```
 
-To postprocess the 3D heat-conduction results, edit the `save_folder` blocks in `plot_rho.py` and run:
+To postprocess 3D heat-conduction results, edit the `save_folder` blocks in `plot_rho.py` and run:
 
 ```bash
 python plot_rho.py
@@ -249,7 +265,7 @@ Contributions are welcome. If you find a bug, mistake, or unclear documentation,
 
 ## Citation
 
-If you use this code or find our work useful, please cite the associated CMAME paper. The BibTeX for the publication is given as:
+If you use this code or find our work useful, please cite the associated CMAME paper:
 
 ```bibtex
 @article{sun_multi-material_2026,
