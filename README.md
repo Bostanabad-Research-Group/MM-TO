@@ -27,10 +27,10 @@ The repository includes examples for:
 | --- | --- |
 | `compliance minimization 2D/` | 2D compliance-minimization examples with mass, cost, and combined mass-cost constraints. |
 | `compliance minimization 3D/` | 3D compliance-minimization examples for single-material and multi-material/mass-cost cases. |
-| `heat conduction 2D/` | 2D heat-conduction topology optimization examples. |
+| `heat conduction 2D/` | 2D heat-conduction topology optimization examples. It requires a Data folder.|
 | `heat conduction 3D/` | 3D heat-conduction topology optimization examples. |
-| `compliant design/` | 2D compliant mechanism examples for single- and multi-material designs. |
-| `thermo-mechanical/` | 2D thermo-mechanical design examples with different material systems. |
+| `compliant design/` | 2D compliant mechanism examples for single- and multi-material designs. It requires a Data folder.|
+| `thermo-mechanical/` | 2D thermo-mechanical design examples with different material systems. It requires a Data folder.|
 
 Each example folder contains its own `models/` and `utils/` subfolders. Run scripts from inside the corresponding example folder so that local imports resolve correctly.
 
